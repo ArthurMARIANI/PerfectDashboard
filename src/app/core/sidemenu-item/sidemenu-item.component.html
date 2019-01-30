@@ -1,0 +1,11 @@
+<mat-list-item color="primary" (click)="onItemSelected(menu)">
+    <div [ngStyle]="{'padding-left': (depth * 12) + 'px'}">{{menu.name | translate}}</div>
+    <span *ngIf="menu.sub">
+        <span *ngIf="menu.badgeValue != false" class="sidebar-badge">{{menu.badgeValue}}</span>
+        <mat-icon [@indicatorRotate]="expanded ? 'expanded': 'collapsed'">
+            expand_more
+        </mat-icon>
+    </span>
+</mat-list-item>
+
+<app-sidemenu-item *ngFor="let submenu of menu?.sub" [menu]="submenu" [depth]="depth+1" [hidden]="!expanded"></app-sidemenu-item>

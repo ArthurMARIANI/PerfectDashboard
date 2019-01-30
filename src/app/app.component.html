@@ -1,0 +1,14 @@
+<mat-sidenav-container class="sidenav-container">
+<mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="isHandset ? 'dialog' : 'navigation'" [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
+  [opened]="!(isHandset | async)!.matches">
+  <app-sidenav></app-sidenav>
+</mat-sidenav>
+<mat-sidenav-content>
+  <app-menubar [drawer]="drawer"></app-menubar>
+  <section class="progress-bar">
+    <mat-progress-bar [color]="'primary'" [mode]="progressBarMode"></mat-progress-bar>
+  </section>
+  <app-weather></app-weather>
+  <router-outlet></router-outlet>
+</mat-sidenav-content>
+</mat-sidenav-container>
